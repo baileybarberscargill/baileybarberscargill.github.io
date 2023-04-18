@@ -1,19 +1,63 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 	<title>Calmposure | Rain</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
+
 <body class="video-page">
-    <a href="index.html"><button class="backBtn" role="button"><span style="color: white">Calm</span><span>posure</span> | Back to Home Page</button></a>
+	<a href="index.html"><button class="backBtn" role="button"><span style="color: white">Calm</span><span>posure</span>
+			| Back to Home Page</button></a>
 	<video autoplay muted loop>
 		<source src="resources/rain.mp4" type="video/mp4">
 		Your browser does not support the video tag.
 	</video>
 
-	<audio autoplay loop>
-		<source src="your_audio_file.mp3" type="audio/mpeg">
+	<audio id="enviro" autoplay loop>
+		<source src="resources/Rain.mp3" type="audio/mpeg">
 		Your browser does not support the audio tag.
 	</audio>
+
+	<audio id="piano" autoplay loop>
+		<source src="resources/Rain - Piano.mp3" type="audio/mpeg">
+		Your browser does not support the audio tag.
+	</audio>
+
+	<div class="volume-box">
+		<div class="volume-slider">
+			<p>Rain volume:</p>
+			<input type="range" id="enviro-volume" name="enviro-volume" min="0" max="1" step="0.05" value="0.1">
+		</div>
+	</div>
+
+	<div class="volume-box">
+		<div class="volume-slider">
+			<p>Piano volume:</p>
+			<input type="range" id="piano-volume" name="piano-volume" min="0" max="1" step="0.05" value="1">
+		</div>
+	</div>
+
+	<script>
+
+		window.onload = function () {
+			var backgroundAudio = document.getElementById("enviro");
+			backgroundAudio.volume = 0.1;
+		}
+
+		const enviroAudio = document.getElementById("enviro");
+		const pianoAudio = document.getElementById("piano");
+		const enviroVolumeSlider = document.getElementById("enviro-volume");
+		const pianoVolumeSlider = document.getElementById("piano-volume");
+
+		enviroVolumeSlider.addEventListener("input", function () {
+			enviroAudio.volume = this.value;
+		});
+
+		pianoVolumeSlider.addEventListener("input", function () {
+			pianoAudio.volume = this.value;
+		});
+	</script>
 </body>
+
 </html>
