@@ -203,3 +203,18 @@
   .volume-slider input[type="range"]:focus::-webkit-slider-thumb {
     background-color: rgb(35, 35, 35);
   }
+
+  @media only screen and (max-width: 768px) {
+    .feature--row {
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      height: auto;
+    }
+    
+    .feature--row a {
+      width: 80%;
+      margin-bottom: 2rem;
+    }
+  }
+  
