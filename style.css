@@ -261,7 +261,11 @@
       margin: 0 10px;
     }
     
-    
+    .iosTitle {
+      background-color: red;
+      padding: 5px;
+      color: white;
+    }
     
 
 
