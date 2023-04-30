@@ -63,15 +63,15 @@
 		if (isIOS) {
 
 			//If on iOS, use the quieter environment sounds.
-			//document.getElementById("enviro").src = "resources/Birds.mp3"
+			document.getElementById("enviro").src = "resources/RainiOS.mp3"
 
+			//We only want to show the enviro controls so hide piano
+			document.getElementById("piano").hidden = true;
 			//Show the audio controls
-			document.getElementById("piano").controls = true;
 			document.getElementById("enviro").controls = true;
 
 			//Show titles
 			document.getElementById("iOSTitleE").hidden = false;
-			document.getElementById("iOSTitleP").hidden = false;
 
 			//Hide the volume sliders as they do not work in iOS
 			document.getElementById("pianoVBox").hidden = true;
@@ -79,10 +79,9 @@
 		}
 		else {
 			document.getElementById("iOSTitleE").hidden = true;
-			document.getElementById("iOSTitleP").hidden = true;
 			document.getElementById("enviro").controls = false;
 			document.getElementById("piano").controls = false;
-			
+
 		}
 
 		$('#loading').hide();
