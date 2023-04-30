@@ -17,14 +17,14 @@
 		Your browser does not support the video tag.
 	</video>
 
-	<div class="volume-box">
+	<div id="enviroVBox" class="volume-box">
 		<div class="volume-slider">
 			<p>Rain volume:</p>
 			<input type="range" id="enviro-volume" name="enviro-volume" min="0" max="1" step="0.05" value="0.1">
 		</div>
 	</div>
 
-	<div class="volume-box">
+	<div id="pianoVBox" class="volume-box">
 		<div class="volume-slider">
 			<p>Piano volume:</p>
 			<input type="range" id="piano-volume" name="piano-volume" min="0" max="1" step="0.05" value="1">
@@ -37,7 +37,7 @@
 		Your browser does not support the audio tag.
 	</audio>
 	
-	<p class="iosTitle" id="iOSTitleP">Piano Audio Controls</p>
+	<p id="iOSTitleP">Piano Audio Controls</p>
 	<audio id="piano" autoplay loop controls>
 		<source src="resources/Rain - Piano.mp3" type="audio/mpeg">
 		Your browser does not support the audio tag.
@@ -56,11 +56,21 @@
 		var isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
 
 		if (isIOS) {
+
+			//If on iOS, use the quieter environment sounds.
+			document.getElementById("enviro").src = "resources/Birds.mp3"
+
+			//Show the audio controls
 			document.getElementById("piano").controls = true;
 			document.getElementById("enviro").controls = true;
 
+			//Show titles
 			document.getElementById("iOSTitleE").hidden = false;
 			document.getElementById("iOSTitleP").hidden = false;
+
+			//Hide the volume sliders as they do not work in iOS
+			document.getElementById("pianoVBox").hidden = true;
+			document.getElementById("enviroVBox").hidden = true;
 		}
 		else {
 			document.getElementById("iOSTitleE").hidden = true;
