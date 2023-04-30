@@ -13,7 +13,7 @@
 	<a href="index.html"><button class="backBtn" role="button"><span style="color: white">Calm</span><span>posure</span>
 			| Back to Home Page</button></a>
 	<video id="bgVideo" autoplay muted loop>
-		<source src="resources/rain.mp4" type="video/mp4" muted playinline>
+		<source src="resources/rain.mp4" type="video/mp4" muted>
 		Your browser does not support the video tag.
 	</video>
 
@@ -53,7 +53,7 @@
 
 		document.getElementById("bgVideo").play();
 
-		if (/iPad|iPhone|iPod/.test(navigator.platform)) {
+		if (getMobileOS == "iOS") {
 			alert("You are using an iOS device.");
 
 			var aControls = document.getElementById("audio-controls");
@@ -88,6 +88,18 @@
 	pianoVolumeSlider.addEventListener("input", function () {
 		pianoAudio.volume = this.value;
 	});
+
+	const getMobileOS = () => {
+		const ua = navigator.userAgent
+		if (/android/i.test(ua)) {
+			return "Android"
+		}
+		else if (/iPad|iPhone|iPod/.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1)) {
+			return "iOS";
+		}
+
+		return "Other"
+	}
 
 	</script>
 </body>
