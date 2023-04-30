@@ -12,7 +12,7 @@
 <body class="video-page">
 	<a href="index.html"><button class="backBtn" role="button"><span style="color: white">Calm</span><span>posure</span>
 			| Back to Home Page</button></a>
-	<video id="bgVideo" autoplay muted loop playsinline>
+	<video id="bgVideo" autoplay muted loop>
 		<source src="resources/rain.mp4" type="video/mp4" muted>
 		Your browser does not support the video tag.
 	</video>
@@ -31,7 +31,7 @@
 		</div>
 	</div>
 
-	<p id="iOSTitleE">Environment Audio Controls</p>
+	<p class="iosTitle" id="iOSTitleE">Environment Audio Controls</p>
 	<audio id="enviro" autoplay loop controls>
 		<source src="resources/Rain.mp3" type="audio/mpeg">
 		Your browser does not support the audio tag.
@@ -53,9 +53,9 @@
 
 		document.getElementById("bgVideo").play();
 
-		if (getMobileOS == "iOS") {
-			alert("You are using an iOS device.");
+		var isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
 
+		if (isIOS) {
 			var aControls = document.getElementById("audio-controls");
 
 			aControls.appendChild(document.getElementById("piano"));
