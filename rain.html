@@ -7,15 +7,7 @@
 	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 
-<audio id="enviro" autoplay loop preload="auto">
-	<source src="resources/Rain.mp3" type="audio/mpeg">
-	Your browser does not support the audio tag.
-</audio>
-
-<audio id="piano" autoplay loop preload="auto">
-	<source src="resources/Rain - Piano.mp3" type="audio/mpeg">
-	Your browser does not support the audio tag.
-</audio>
+<div id="audio-controls"></div>
 
 <body class="video-page">
 	<a href="index.html"><button class="backBtn" role="button"><span style="color: white">Calm</span><span>posure</span>
@@ -39,32 +31,64 @@
 		</div>
 	</div>
 
+	<p id="iOSTitleE">Environment Audio Controls</p>
+	<audio id="enviro" autoplay loop controls>
+		<source src="resources/Rain.mp3" type="audio/mpeg">
+		Your browser does not support the audio tag.
+	</audio>
+	
+	<p id="iOSTitleP">Piano Audio Controls</p>
+	<audio id="piano" autoplay loop controls>
+		<source src="resources/Rain - Piano.mp3" type="audio/mpeg">
+		Your browser does not support the audio tag.
+	</audio>
+
 	<script>
 
-		window.onload = function () {
-			var backgroundAudio = document.getElementById("enviro");
-			backgroundAudio.volume = 0.1;
+	window.onload = function () {
+		var backgroundAudio = document.getElementById("enviro");
+		backgroundAudio.volume = 0.1;
 
-			backgroundAudio.loop = true;
-			//backgroundAudio.play();
+		backgroundAudio.loop = true;
 
-			document.getElementById("bgVideo").play();
-			//document.getElementById("piano").play();
-			//document.getElementById("enviro").play();
+		document.getElementById("bgVideo").play();
+
+		if (/iPad|iPhone|iPod/.test(navigator.platform)) {
+			alert("You are using an iOS device.");
+
+			var aControls = document.getElementById("audio-controls");
+
+			aControls.appendChild(document.getElementById("piano"));
+
+
+			document.getElementById("piano").controls = true;
+			document.getElementById("enviro").controls = true;
+
+			document.getElementsById("iOSTitleE").hidden = false;
+			document.getElementsById("iOSTitleP").hidden = false;
 		}
+		else {
+			document.getElementById("iOSTitleE").hidden = true;
+			document.getElementById("iOSTitleP").hidden = true;
+			document.getElementById("enviro").controls = false;
+			document.getElementById("piano").controls = false;
+			
+		}
+	};
 
-		const enviroAudio = document.getElementById("enviro");
-		const pianoAudio = document.getElementById("piano");
-		const enviroVolumeSlider = document.getElementById("enviro-volume");
-		const pianoVolumeSlider = document.getElementById("piano-volume");
+	const enviroAudio = document.getElementById("enviro");
+	const pianoAudio = document.getElementById("piano");
+	const enviroVolumeSlider = document.getElementById("enviro-volume");
+	const pianoVolumeSlider = document.getElementById("piano-volume");
 
-		enviroVolumeSlider.addEventListener("input", function () {
-			enviroAudio.volume = this.value;
-		});
+	enviroVolumeSlider.addEventListener("input", function () {
+		enviroAudio.volume = this.value;
+	});
 
-		pianoVolumeSlider.addEventListener("input", function () {
-			pianoAudio.volume = this.value;
-		});
+	pianoVolumeSlider.addEventListener("input", function () {
+		pianoAudio.volume = this.value;
+	});
+
 	</script>
 </body>
 
