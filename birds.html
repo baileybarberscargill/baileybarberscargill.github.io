@@ -37,12 +37,12 @@
 	</div>
 
 	<p class="iosTitle" id="iOSTitleE">Audio Controls:</p>
-	<audio id="enviro" autoplay loop controls volume="0.1">
+	<audio id="enviro" autoplay loop controls muted>
 		<source src="resources/Birds.mp3" type="audio/mpeg">
 		Your browser does not support the audio tag.
 	</audio>
 	
-	<audio id="piano" autoplay loop controls>
+	<audio id="piano" autoplay loop controls muted>
 		<source src="resources/Birds - Piano.mp3" type="audio/mpeg">
 		Your browser does not support the audio tag.
 	</audio>
@@ -82,6 +82,9 @@
 			document.getElementById("piano").controls = false;
 			
 		}
+
+		document.getElementById("enviro").muted = false;
+		document.getElementById("piano").muted = false;
 
 		$('#loading').hide();
 	};
