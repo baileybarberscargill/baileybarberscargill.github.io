@@ -6,6 +6,7 @@
 	<title>Calmposure | Birds</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<script src="jquery-3.6.4.min.js"></script>
+	<link rel="icon" type="image/x-icon" href="/resources/favicon.ico">
 </head>
 
 <body class="video-page">
@@ -35,13 +36,12 @@
 		</div>
 	</div>
 
-	<p class="iosTitle" id="iOSTitleE">Birds Audio</p>
-	<audio id="enviro" autoplay loop controls>
+	<p class="iosTitle" id="iOSTitleE">Audio Controls:</p>
+	<audio id="enviro" autoplay loop controls volume="0.1">
 		<source src="resources/Birds.mp3" type="audio/mpeg">
 		Your browser does not support the audio tag.
 	</audio>
 	
-	<p class="iosTitle" id="iOSTitleP">Piano Audio</p>
 	<audio id="piano" autoplay loop controls>
 		<source src="resources/Birds - Piano.mp3" type="audio/mpeg">
 		Your browser does not support the audio tag.
@@ -62,15 +62,15 @@
 		if (isIOS) {
 
 			//If on iOS, use the quieter environment sounds.
-			//document.getElementById("enviro").src = "resources/Birds.mp3"
+			document.getElementById("enviro").src = "resources/Bird iOS.mp3"
 
+			//We only want to show the enviro controls so hide piano
+			document.getElementById("piano").hidden = true;
 			//Show the audio controls
-			document.getElementById("piano").controls = true;
 			document.getElementById("enviro").controls = true;
 
 			//Show titles
 			document.getElementById("iOSTitleE").hidden = false;
-			document.getElementById("iOSTitleP").hidden = false;
 
 			//Hide the volume sliders as they do not work in iOS
 			document.getElementById("pianoVBox").hidden = true;
@@ -78,7 +78,6 @@
 		}
 		else {
 			document.getElementById("iOSTitleE").hidden = true;
-			document.getElementById("iOSTitleP").hidden = true;
 			document.getElementById("enviro").controls = false;
 			document.getElementById("piano").controls = false;
 			
