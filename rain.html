@@ -56,13 +56,6 @@
 		var isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
 
 		if (isIOS) {
-			var aControls = document.getElementById("audio-controls");
-
-			aControls.appendChild(document.getElementById("piano"));
-			
-			console.log(navigator.userAgent);
-
-
 			document.getElementById("piano").controls = true;
 			document.getElementById("enviro").controls = true;
 
